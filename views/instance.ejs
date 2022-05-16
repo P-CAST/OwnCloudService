@@ -1,0 +1,55 @@
+<h1>Instance management</h1><br>
+
+<div class="vm-table">
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">VM ID</th>
+            <th scope="col">VM Name</th>
+            <th scope="col">State</th>
+            <th scope="col">Image</th>
+            <th scope="col">IP-address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for (_=0; _ < instance.length; _++) { %>
+          <% let vmid = JSON.stringify(instance[_].vmid) %>
+          <% let vmname = JSON.stringify(instance[_].vmname) %>
+          <% let status = JSON.stringify(instance[_].status) %>
+          <% let image = JSON.stringify(instance[_].variant) %>
+          <% let ip = JSON.stringify(instance[_].ip) %>
+            <tr>
+              <th scope="row"><%- _ %></th>
+              <th><%- vmid.replace(/"/g, '') %></th>
+              <th><%- vmname.replace(/"/g, '') %></th>
+              <th><%- status.replace(/"/g, '') %></th>
+              <th><%- image.replace(/"/g, '') %></th>
+              <th><%- ip.replace(/"/g, '') %></th>
+              <th>
+                <a href="/startinstance/<%- vmid %>" class="btn btn-sm btn-success">Start</a>
+                <a href="/shutdowninstance/<%- vmid %>" class="btn btn-sm btn-danger">Stop</a>
+              </th>
+            </tr>
+          <% } %>
+        </tbody>
+    </table>
+</div>
+
+<form action="/createinstance" method="post">
+    <label for="variant">Choose instance image</label>
+    <select name="variant" id="cars">
+      <option value="ubuntu-bionic">Ubuntu server 18.04 LTS</option>
+      <option value="ubuntu-focal">Ubuntu server 20.04 LTS</option>
+      <option value="debian-bullseye">Debian 11 Bullseye</option>
+    </select><br>
+
+    <input type="text" id="create_vmname" name="create_vmname" placeholder="Enter VM name" required>
+    <button type="submit" id="create_instance" name="create_instance">Create</button>
+</form>
+<form action="/deleteinstance" method="post">
+    <input type="number" name="del_vmid" id="del_vmid" placeholder="Enter VM id" required>
+    <button type="submit">Delete</button>
+</form>

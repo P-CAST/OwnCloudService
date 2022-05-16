@@ -1,0 +1,32 @@
+<div class="col-sm-6 bg-dark rounded border py-3 offset-sm-1">
+    <h1 class="text-center">Register</h1>
+    <form action="/register" method="post">
+        <div class="form-group mt">
+            <input type="text" name="firstname" id="firstname"class="form-control" placeholder="Enter firstname" required>
+        </div>
+        <div class="form-group mt">
+            <input type="text" name="lastname" id="lastname"class="form-control" placeholder="Enter lastname" required>
+        </div>
+        <div class="form-group mt">
+            <input type="text" name="username" id="firstname"class="form-control" placeholder="Enter username" required>
+        </div>
+        <div class="form-group mt">
+            <input type="email" name="email" id="email"class="form-control" placeholder="Enter email" required>
+        </div>
+        <div class="form-group mt">
+            <input type="password" name="password" id="password"class="form-control" placeholder="Enter password" required>
+        </div>
+        <div class="form-group mt">
+            <select name="role" id="cars">
+                <option value="owner">owner</option>
+                <option value="administrator">administrator</option>
+                <option value="user">user</option>
+              </select>
+        </div>
+        <div class="form-group mt">
+            <input type="number" name="vm_limit" id="vm_limit"class="form-control" placeholder="Enter vm_limit" required>
+        </div>
+
+        <button type="submit" class="mt-2 btn btn-success">Sign up</button>
+    </form>
+</div>
